@@ -8,6 +8,9 @@ export const FIRST_MOUNTAIN_LOWER_Y_RANGE = HALF_MAX_HEIGHT + 100;
 export const SECOND_MOUNTAIN_MAX_HEIGHT = HALF_MAX_HEIGHT + 110;
 export const SECOND_MOUNTAIN_LOWER_Y_RANGE = SECOND_MOUNTAIN_MAX_HEIGHT + 50;
 
+// Sun Constants
+export const SUN_DIAMETER = MAX_HEIGHT/4;
+
 // Color Themes
 export const MOUNTAIN_TONES = [
     [37, 106, 220],

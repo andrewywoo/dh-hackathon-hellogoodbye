@@ -2,6 +2,7 @@ import React from 'react';
 import { ReactP5Wrapper } from 'react-p5-wrapper';
 
 import { drawMountains } from './layers/mountains';
+import { drawSun } from './layers/sun';
 import { MAX_HEIGHT, MAX_WIDTH } from './constants';
 
 const SunsetScene = () => {
@@ -13,6 +14,7 @@ const SunsetScene = () => {
         };
 
         p5.draw = () => {
+            drawSun(p5);
             drawMountains(p5);
         };
     };
