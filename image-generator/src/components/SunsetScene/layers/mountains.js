@@ -1,18 +1,12 @@
-// Canvas Constants
-const MAX_HEIGHT = 600;
-const MAX_WIDTH = 800;
-
-// Mountain Constants
-const HALF_MAX_HEIGHT = MAX_HEIGHT / 2;
-const FIRST_MOUNTAIN_LOWER_Y_RANGE = HALF_MAX_HEIGHT + 100;
-const SECOND_MOUNTAIN_MAX_HEIGHT = HALF_MAX_HEIGHT + 110;
-const SECOND_MOUNTAIN_LOWER_Y_RANGE = SECOND_MOUNTAIN_MAX_HEIGHT + 50;
-
-// Color Themes
-const MOUNTAIN_TONES = [
-    [37, 106, 220],
-    [31, 64, 104],
-];
+import {
+    MAX_HEIGHT,
+    MAX_WIDTH,
+    HALF_MAX_HEIGHT,
+    FIRST_MOUNTAIN_LOWER_Y_RANGE,
+    SECOND_MOUNTAIN_MAX_HEIGHT,
+    SECOND_MOUNTAIN_LOWER_Y_RANGE,
+    MOUNTAIN_TONES,
+} from '../constants';
 
 export function drawMountains(p5) {
     drawFirstMountainRange(p5);
@@ -50,7 +44,7 @@ function drawMountainRange(p5, maxHeight, minHeight, color) {
     p5.curveVertex(0, maxHeight);
 
     coords.forEach((coord) => {
-      p5.curveVertex(coord.x, coord.y);
+        p5.curveVertex(coord.x, coord.y);
     });
 
     p5.curveVertex(MAX_WIDTH, maxHeight);

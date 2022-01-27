@@ -2,10 +2,7 @@ import React from 'react';
 import { ReactP5Wrapper } from 'react-p5-wrapper';
 
 import { drawMountains } from './layers/mountains';
-
-// Canvas Constants
-const MAX_HEIGHT = 600;
-const MAX_WIDTH = 800;
+import { MAX_HEIGHT, MAX_WIDTH } from './constants';
 
 const SunsetScene = () => {
     const sketch = (p5) => {
