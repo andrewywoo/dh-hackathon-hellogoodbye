@@ -22,3 +22,7 @@ export const LAND_TONES = [
     [255, 235, 0],
     [72, 48, 147],
 ];
+
+export const HORIZON_TONES = [
+    [31, 120, 180],
+];
