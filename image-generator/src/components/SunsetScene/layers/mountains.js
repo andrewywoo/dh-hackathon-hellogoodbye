@@ -1,3 +1,5 @@
+import tinycolor from 'tinycolor2';
+
 import {
     CANVAS_MAX_HEIGHT,
     CANVAS_MAX_WIDTH,
@@ -34,25 +36,29 @@ function drawSecondMountainRange(p5, mountainColor) {
 function drawMountainRange(p5, maxHeight, minHeight, color) {
     const { r, g, b } = color;
     p5.fill(r, g, b);
-    p5.noStroke();
+
+    const outline = tinycolor(color).brighten(10).toRgb();
+    p5.stroke(outline.r, outline.g, outline.b, 255);
+    p5.strokeWeight(5);
+
     const xRanges = makeArr(
         0,
         CANVAS_MAX_WIDTH,
-        Math.random() * (24 - 10) + 10,
+        Math.random() * (15 - 7) + 7,
     );
     const coords = xRanges.map((x) => {
         return { x: x, y: Math.random() * (maxHeight - minHeight) + minHeight };
     });
 
     p5.beginShape();
-    p5.vertex(0, CANVAS_MAX_HEIGHT);
-    p5.curveVertex(0, maxHeight);
+    p5.vertex(-10, CANVAS_MAX_HEIGHT);
+    p5.curveVertex(-10, maxHeight);
 
     coords.forEach((coord) => {
         p5.curveVertex(coord.x, coord.y);
     });
 
-    p5.curveVertex(CANVAS_MAX_WIDTH, maxHeight);
-    p5.vertex(CANVAS_MAX_WIDTH, CANVAS_MAX_HEIGHT);
+    p5.curveVertex(CANVAS_MAX_WIDTH + 10, maxHeight);
+    p5.vertex(CANVAS_MAX_WIDTH + 10, CANVAS_MAX_HEIGHT);
     p5.endShape(p5.CLOSE);
 }
