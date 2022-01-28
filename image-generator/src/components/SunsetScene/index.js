@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ReactP5Wrapper } from 'react-p5-wrapper';
 import tinycolor from 'tinycolor2';
 
@@ -12,10 +12,9 @@ import { setGradient } from './utilities';
 
 const SunsetScene = ({setmdata}) => {
     const sketch = (p5) => {
-        let canvas;
 
         p5.setup = () => {
-            canvas = p5.createCanvas(CANVAS_MAX_WIDTH, CANVAS_MAX_HEIGHT);
+            p5.createCanvas(CANVAS_MAX_WIDTH, CANVAS_MAX_HEIGHT);
             p5.noLoop();
         };
 
@@ -62,11 +61,11 @@ const SunsetScene = ({setmdata}) => {
             // console.log(metadataToSave);
             console.log(metadata);
             setmdata(metadata);
-            
+
         };
 
-        p5.updateWithProps = (props) => {
-        }
+        // p5.updateWithProps = (props) => {
+        // }
     };
 
     return (
