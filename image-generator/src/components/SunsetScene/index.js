@@ -55,13 +55,12 @@ const SunsetScene = ({setmdata}) => {
             ];
 
             drawStars(p5, metadata);
-            drawSun(p5, sunColor, metadata);
-            drawHorizon(p5);
+            const sunAttr = drawSun(p5, sunColor, metadata);
+            drawHorizon(p5, sunAttr);
             drawMountains(p5, mountainColors, metadata);
             drawLand(p5, landColors, metadata);
 
             setmdata(metadata);
-
         };
     };
 

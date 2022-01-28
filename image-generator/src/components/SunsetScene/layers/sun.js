@@ -21,6 +21,8 @@ export function drawSun(p5, color, metadata) {
     p5.strokeWeight(5);
 
     metadata.sun = {...metadata.sun, position: {x: sunXPos, y: sunYPos}};
-    
+
     p5.circle(sunXPos, sunYPos, SUN_DIAMETER);
+
+    return { sunXPos, sunYPos, color };
 }

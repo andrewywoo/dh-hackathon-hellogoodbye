@@ -1,14 +1,17 @@
+// import { makeArr } from '../utilities';
+
 import {
     CANVAS_MAX_HEIGHT,
     CANVAS_MAX_WIDTH,
     HORIZON_HEIGHT,
+    SUN_DIAMETER,
     HORIZON_TONES,
     WAVE_TONES,
 } from '../constants';
 
 const generateHorizon = (p5, colors) => {
     const [r, g, b] = colors[0];
-    p5.fill(r, g, b, 200);
+    p5.fill(r, g, b, 255);
     p5.noStroke();
 
     p5.beginShape();
@@ -53,7 +56,46 @@ const generateWaves = (p5, colors) => {
     }
 }
 
-export const drawHorizon = (p5) => {
+const generateReflection = (p5, sunXPos, sunYPos, sunColor) => {
+    const reflectionWidth = SUN_DIAMETER;
+
+    const sunLeftMiddleCoords = {
+        x: sunXPos - (reflectionWidth / 2),
+        y: sunYPos,
+    };
+
+    const sunRightMiddleCoords = {
+        x: sunXPos + (reflectionWidth / 2),
+        y: sunYPos,
+    };
+
+    // const yRanges = makeArr(
+    //     HORIZON_HEIGHT,
+    //     CANVAS_MAX_HEIGHT,
+    //     Math.random() * (12 - 10) + 10,
+    // );
+    // console.log('yRanges: ', yRanges);
+    // const coords = yRanges.map((y) => {
+    //     return {
+    //         x: Math.random() * (CANVAS_MAX_HEIGHT - HORIZON_HEIGHT) + HORIZON_HEIGHT,
+    //         y: y
+    //     };
+    // });
+
+    const color = p5.color(sunColor.r, sunColor.g, sunColor.b, 100);
+    p5.fill(color);
+    console.log('color: ', color);
+    p5.noStroke();
+    p5.beginShape();
+    p5.vertex(sunLeftMiddleCoords.x, HORIZON_HEIGHT);
+    p5.vertex(sunRightMiddleCoords.x, HORIZON_HEIGHT);
+    p5.vertex(sunRightMiddleCoords.x + (sunRightMiddleCoords.x / 2), CANVAS_MAX_HEIGHT);
+    p5.vertex(sunLeftMiddleCoords.x - (sunLeftMiddleCoords.x / 2), CANVAS_MAX_HEIGHT);
+    p5.endShape(p5.CLOSE);
+}
+
+export const drawHorizon = (p5, sunAttr) => {
     generateHorizon(p5, HORIZON_TONES);
     generateWaves(p5, WAVE_TONES);
+    generateReflection(p5, sunAttr.sunXPos, sunAttr.sunYPos, sunAttr.color);
 }

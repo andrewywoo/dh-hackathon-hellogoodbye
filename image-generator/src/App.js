@@ -12,7 +12,9 @@ function App() {
 
     return (
         <div className="image-generator-wrapper">
-            <h1>Image Generator</h1>
+            <h1>DH Hackathon 2022</h1>
+            <h2>Team: HelloGoodbye</h2>
+            <h3>Andrew Woo, Dan Chung</h3>
             {renderSunsets(10)}
         </div>
     );
