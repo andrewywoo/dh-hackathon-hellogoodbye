@@ -13,7 +13,7 @@ export function drawSun(p5, color, metadata) {
     const { r, g, b } = color;
     const sunColor = p5.color(r, g, b);
 
-    metadata.sun = {color: tinycolor.random(color).toHexString()};
+    metadata.sun = {color: tinycolor(color).toHexString()};
 
     p5.fill(sunColor);
     const outlineRgb = tinycolor(color).brighten(10).toRgb();
