@@ -84,7 +84,6 @@ const generateReflection = (p5, sunXPos, sunYPos, sunColor) => {
 
     const color = p5.color(sunColor.r, sunColor.g, sunColor.b, 100);
     p5.fill(color);
-    console.log('color: ', color);
     p5.noStroke();
     p5.beginShape();
     p5.vertex(sunLeftMiddleCoords.x, HORIZON_HEIGHT);
