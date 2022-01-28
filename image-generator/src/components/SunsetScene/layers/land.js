@@ -19,11 +19,14 @@ const generateLands = (p5, maxHeight, minHeight, colors) => {
     });
 
     let offset = 0;
+    let alpha = 50;
 
     colors.forEach((color) => {
         const {r, g, b} = color;
         p5.fill(r, g, b);
-        p5.noStroke();
+        p5.strokeWeight(3);
+        p5.stroke(255, 255, 255, alpha);
+        alpha = (alpha / 2);
 
         p5.beginShape();
         p5.vertex(0, CANVAS_MAX_HEIGHT);
@@ -36,15 +39,15 @@ const generateLands = (p5, maxHeight, minHeight, colors) => {
         p5.vertex(CANVAS_MAX_WIDTH, maxHeight / 2);
         p5.vertex(CANVAS_MAX_WIDTH, CANVAS_MAX_HEIGHT);
         p5.endShape(p5.CLOSE);
-        offset += 20;
+        offset += 10;
     });
 };
 
 export const drawLand = (p5, landColors) => {
     generateLands(
         p5,
-        CANVAS_MAX_HEIGHT - 100,
-        CANVAS_HALF_MAX_HEIGHT + 100,
+        CANVAS_MAX_HEIGHT - 75,
+        CANVAS_HALF_MAX_HEIGHT + 175,
         landColors,
     );
 };
