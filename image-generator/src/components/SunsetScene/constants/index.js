@@ -29,3 +29,8 @@ export const LAND_TONES = [
 export const HORIZON_TONES = [
     [31, 120, 180],
 ];
+
+export const WAVE_TONES = [
+    [255, 255, 255],
+    [0, 0, 0],
+];

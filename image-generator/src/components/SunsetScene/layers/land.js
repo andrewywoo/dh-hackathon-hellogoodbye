@@ -24,6 +24,7 @@ const generateLands = (p5, maxHeight, minHeight, colors) => {
     colors.forEach((color) => {
         const [r, g, b] = color;
         p5.fill(r, g, b);
+        p5.noStroke();
 
         p5.beginShape();
         p5.vertex(0, CANVAS_MAX_HEIGHT);
