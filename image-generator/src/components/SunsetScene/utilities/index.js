@@ -31,3 +31,19 @@ export const setGradient = (p5, x, y, w, h, c1, c2, axis) => {
         }
     }
 }
+
+/**
+ * 
+ * isInPercentage(10) => 
+ * if randomNum is 23
+ * returns false
+ * if randomNum is 9
+ * returns true
+ * 
+ * @param {num} percentToHit percentage you want to be in
+ * @returns {boolean}
+ */
+export const isInPercentage = (percentToHit) => {
+    const randomNum = Math.round(Math.random() * 99) + 1;
+    return randomNum <= percentToHit; 
+}
