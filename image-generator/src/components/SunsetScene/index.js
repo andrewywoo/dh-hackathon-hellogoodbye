@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ReactP5Wrapper } from 'react-p5-wrapper';
 import tinycolor from 'tinycolor2';
 
@@ -55,18 +55,12 @@ const SunsetScene = ({setmdata}) => {
             drawStars(p5, metadata);
             drawSun(p5, sunColor, metadata);
             drawHorizon(p5);
-            drawMountains(p5, mountainColors);
-            drawLand(p5, landColors);
+            drawMountains(p5, mountainColors, metadata);
+            drawLand(p5, landColors, metadata);
 
-            // setMetadata(metadataToSave);
-            // console.log(metadataToSave);
-            console.log(metadata);
             setmdata(metadata);
             
         };
-
-        p5.updateWithProps = (props) => {
-        }
     };
 
     return (

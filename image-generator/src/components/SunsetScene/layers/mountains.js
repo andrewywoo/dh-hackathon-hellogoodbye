@@ -10,30 +10,34 @@ import {
 } from '../constants';
 import { makeArr } from '../utilities';
 
-export function drawMountains(p5, mountainColors) {
-    drawFirstMountainRange(p5, mountainColors[0]);
-    drawSecondMountainRange(p5, mountainColors[1]);
+export function drawMountains(p5, mountainColors, metadata) {
+    drawFirstMountainRange(p5, mountainColors[0], metadata);
+    drawSecondMountainRange(p5, mountainColors[1], metadata);
 }
 
-function drawFirstMountainRange(p5, mountainColor) {
+function drawFirstMountainRange(p5, mountainColor, metadata) {
+    metadata.first_mountain = {color: tinycolor(mountainColor).toHexString()};
     drawMountainRange(
         p5,
         CANVAS_HALF_MAX_HEIGHT,
         FIRST_MOUNTAIN_LOWER_Y_RANGE,
         mountainColor,
+        metadata
     );
 }
 
-function drawSecondMountainRange(p5, mountainColor) {
+function drawSecondMountainRange(p5, mountainColor, metadata) {
+    metadata.second_mountain = {color: tinycolor(mountainColor).toHexString()};
     drawMountainRange(
         p5,
         SECOND_MOUNTAIN_MAX_HEIGHT,
         SECOND_MOUNTAIN_LOWER_Y_RANGE,
         mountainColor,
+        metadata
     );
 }
 
-function drawMountainRange(p5, maxHeight, minHeight, color) {
+function drawMountainRange(p5, maxHeight, minHeight, color, metadata) {
     const { r, g, b } = color;
     p5.fill(r, g, b);
 
