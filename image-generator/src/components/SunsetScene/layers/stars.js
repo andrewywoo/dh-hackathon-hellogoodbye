@@ -1,8 +1,14 @@
-import { CANVAS_MAX_WIDTH, HORIZON_HEIGHT, STAR_RADIUS, STAR_TONES } from '../constants';
-import { makeArr } from '../utilities';
+import { CANVAS_MAX_WIDTH, HORIZON_HEIGHT, STAR_RADIUS, STAR_TONES, STAR_APPEARANCE_PERCENTAGE } from '../constants';
+import { makeArr, isInPercentage } from '../utilities';
 
 export function drawStars(p5, metadata) {
-    const starCount = Math.floor(Math.random() * (60 - 30) + 30);
+    let starCount = Math.floor(Math.random() * (60 - 30) + 30);
+    
+    // 10% chance of having no stars 
+    if(isInPercentage(STAR_APPEARANCE_PERCENTAGE)){
+        starCount = 0;
+    }
+
     metadata.starCount = starCount;
 
     const xCoords = makeArr(0, CANVAS_MAX_WIDTH, starCount);
