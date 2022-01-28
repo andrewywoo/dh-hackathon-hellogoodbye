@@ -1,3 +1,5 @@
+import tinycolor from 'tinycolor2';
+
 // import { makeArr } from '../utilities';
 
 import {
@@ -11,14 +13,18 @@ import {
 
 const generateHorizon = (p5, colors) => {
     const [r, g, b] = colors[0];
-    p5.fill(r, g, b, 255);
-    p5.noStroke();
+    const waterColor = p5.color(r, g, b, 255);
+    p5.fill(waterColor);
+    const brightenColor = tinycolor({r, g, b}).brighten(10).toRgb();
+    const strokeColor = p5.color(brightenColor.r, brightenColor.g, brightenColor.b, 100);
+    p5.stroke(strokeColor);
+    p5.strokeWeight(20);
 
     p5.beginShape();
-    p5.vertex(0, CANVAS_MAX_HEIGHT);
-    p5.vertex(0, HORIZON_HEIGHT);
-    p5.vertex(CANVAS_MAX_WIDTH, HORIZON_HEIGHT);
-    p5.vertex(CANVAS_MAX_WIDTH, CANVAS_MAX_HEIGHT);
+    p5.vertex(-10, CANVAS_MAX_HEIGHT);
+    p5.vertex(-10, HORIZON_HEIGHT);
+    p5.vertex(CANVAS_MAX_WIDTH + 10, HORIZON_HEIGHT);
+    p5.vertex(CANVAS_MAX_WIDTH + 10, CANVAS_MAX_HEIGHT);
     p5.endShape(p5.CLOSE);
 }
 

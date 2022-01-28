@@ -43,7 +43,7 @@ const generateLands = (p5, maxHeight, minHeight, colors, metadata) => {
         offset += 10;
     });
 
-    metadata.lands = {baseColor: tinycolor(colors[0]).toHexString(), unique_vertex_count: xRanges.length};
+    metadata.lands = {baseColor: tinycolor(colors[0]).toHexString(), uniqueVertexCount: xRanges.length};
 };
 
 export const drawLand = (p5, landColors, metadata) => {
