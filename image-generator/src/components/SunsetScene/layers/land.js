@@ -2,7 +2,6 @@ import {
     CANVAS_MAX_HEIGHT,
     CANVAS_MAX_WIDTH,
     CANVAS_HALF_MAX_HEIGHT,
-    LAND_TONES,
 } from '../constants';
 import { makeArr } from '../utilities';
 
@@ -22,7 +21,7 @@ const generateLands = (p5, maxHeight, minHeight, colors) => {
     let offset = 0;
 
     colors.forEach((color) => {
-        const [r, g, b] = color;
+        const {r, g, b} = color;
         p5.fill(r, g, b);
 
         p5.beginShape();
@@ -40,11 +39,11 @@ const generateLands = (p5, maxHeight, minHeight, colors) => {
     });
 };
 
-export const drawLand = (p5) => {
+export const drawLand = (p5, landColors) => {
     generateLands(
         p5,
         CANVAS_MAX_HEIGHT - 100,
         CANVAS_HALF_MAX_HEIGHT + 100,
-        LAND_TONES,
+        landColors,
     );
 };

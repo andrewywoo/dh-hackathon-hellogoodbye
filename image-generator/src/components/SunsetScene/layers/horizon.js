@@ -9,7 +9,7 @@ const generateHorizon = (p5, colors) => {
     const [r, g, b] = colors[0];
     p5.fill(r, g, b, 200);
 
-    const offset = 25;
+    const offset = -10;
 
     p5.beginShape();
     p5.vertex(0, CANVAS_MAX_HEIGHT);

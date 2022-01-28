@@ -15,17 +15,6 @@ export const SUN_DIAMETER = CANVAS_MAX_HEIGHT/4;
 export const STAR_RADIUS = [[2, 8], [3, 10], [4,13]];
 
 // Color Themes
-export const MOUNTAIN_TONES = [
-    [37, 106, 220],
-    [31, 64, 104],
-];
-
-export const LAND_TONES = [
-    [243, 1, 102],
-    [255, 235, 0],
-    [72, 48, 147],
-];
-
 export const HORIZON_TONES = [
     [31, 120, 180],
 ];
