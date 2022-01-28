@@ -8,7 +8,7 @@ import {
 
 export function drawSun(p5, color) {
     const sunXPos = Math.random() * (CANVAS_MAX_WIDTH - 0) + 0;
-    const sunYPos = Math.random() * (CANVAS_HALF_MAX_HEIGHT - 0) + 0;
+    const sunYPos = Math.random() * (CANVAS_HALF_MAX_HEIGHT - 200) + 200;
 
     const { r, g, b } = color;
     const sunColor = p5.color(r, g, b);

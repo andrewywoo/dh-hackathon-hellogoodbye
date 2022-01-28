@@ -8,12 +8,12 @@ export const makeArr = (startValue, stopValue, cardinality) => {
 }
 
 export const setGradient = (p5, x, y, w, h, c1, c2, axis) => {
-    const Y_AXIS = 1;
-    const X_AXIS = 2;
+    const HORIZONTAL = 'horizontal';
+    const VERTICAL = 'vertical';
 
     p5.noFill();
 
-    if (axis === Y_AXIS) {
+    if (axis === VERTICAL) {
       // Top to bottom gradient
         for (let i = y; i <= y + h; i++) {
             let inter = p5.map(i, y, y + h, 0, 1);
@@ -21,7 +21,7 @@ export const setGradient = (p5, x, y, w, h, c1, c2, axis) => {
             p5.stroke(c);
             p5.line(x, i, x + w, i);
         }
-    } else if (axis === X_AXIS) {
+    } else if (axis === HORIZONTAL) {
       // Left to right gradient
         for (let i = x; i <= x + w; i++) {
             let inter = p5.map(i, x, x + w, 0, 1);
