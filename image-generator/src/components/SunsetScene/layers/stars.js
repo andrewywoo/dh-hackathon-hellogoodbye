@@ -29,6 +29,7 @@ function star(p5, x, y, radius1, radius2, npoints, colors) {
     const [r, g, b] = colors[0];
     const alpha = Math.floor(Math.random() * (150 - 20) + 20);
     p5.fill(r, g, b, alpha);
+    p5.noStroke();
 
     p5.beginShape();
     for (let a = 0; a < p5.TWO_PI; a += angle) {

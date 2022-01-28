@@ -8,6 +8,7 @@ import { drawLand } from './layers/land';
 import { drawHorizon } from './layers/horizon';
 import { drawStars } from './layers/stars';
 import { CANVAS_MAX_HEIGHT, CANVAS_MAX_WIDTH } from './constants';
+import { setGradient } from './utilities';
 
 const SunsetScene = () => {
     const [doSave, setDoSave] = useState(false);
@@ -16,13 +17,22 @@ const SunsetScene = () => {
         let canvas;
         p5.setup = () => {
             canvas = p5.createCanvas(CANVAS_MAX_WIDTH, CANVAS_MAX_HEIGHT);
-            p5.background(0);
             p5.noLoop();
         };
 
         p5.draw = () => {
             // Grab random color as base color
             let color = new tinycolor.random();
+
+            // Sets complimentary color as background
+            const { r, g, b } = color.complement().toRgb();
+            p5.background(r, g, b);
+
+            // Sets gradient on background
+            const white = p5.color(255, 255, 255, 100);
+            const black = p5.color(0, 25);
+            setGradient(p5, 0, 0, CANVAS_MAX_WIDTH, CANVAS_MAX_HEIGHT * 0.6, white, black, 1);
+
             // Grabs split complementary colors
             let colors = color.splitcomplement();
 
