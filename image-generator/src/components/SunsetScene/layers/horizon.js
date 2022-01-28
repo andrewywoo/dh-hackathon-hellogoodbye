@@ -1,12 +1,10 @@
 import {
     CANVAS_MAX_HEIGHT,
     CANVAS_MAX_WIDTH,
-    CANVAS_HALF_MAX_HEIGHT,
+    HORIZON_HEIGHT,
     HORIZON_TONES,
     WAVE_TONES,
 } from '../constants';
-
-const offset = -10;
 
 const generateHorizon = (p5, colors) => {
     const [r, g, b] = colors[0];
@@ -15,8 +13,8 @@ const generateHorizon = (p5, colors) => {
 
     p5.beginShape();
     p5.vertex(0, CANVAS_MAX_HEIGHT);
-    p5.vertex(0, CANVAS_HALF_MAX_HEIGHT - offset);
-    p5.vertex(CANVAS_MAX_WIDTH, CANVAS_HALF_MAX_HEIGHT - offset);
+    p5.vertex(0, HORIZON_HEIGHT);
+    p5.vertex(CANVAS_MAX_WIDTH, HORIZON_HEIGHT);
     p5.vertex(CANVAS_MAX_WIDTH, CANVAS_MAX_HEIGHT);
     p5.endShape(p5.CLOSE);
 }
@@ -28,7 +26,7 @@ const generateWaves = (p5, colors) => {
     const [r2, g2, b2] = colors[1];
     p5.fill(r2, g2, b2, 15);
 
-    const wavesUpperBounds = CANVAS_HALF_MAX_HEIGHT - offset;
+    const wavesUpperBounds = HORIZON_HEIGHT;
     const VARIANCE_FACTOR = 0;
     const STEP = () => { return Math.floor(Math.random() * (36 - 20) + 20) };
 

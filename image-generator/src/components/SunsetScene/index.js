@@ -7,7 +7,7 @@ import { drawSun } from './layers/sun';
 import { drawLand } from './layers/land';
 import { drawHorizon } from './layers/horizon';
 import { drawStars } from './layers/stars';
-import { CANVAS_MAX_HEIGHT, CANVAS_MAX_WIDTH } from './constants';
+import { CANVAS_MAX_HEIGHT, CANVAS_MAX_WIDTH, HORIZON_HEIGHT } from './constants';
 import { setGradient } from './utilities';
 
 import './style.scss';
@@ -33,7 +33,7 @@ const SunsetScene = ({setmdata}) => {
             // Sets gradient on background
             const white = p5.color(255, 255, 255, 150);
             const black = p5.color(0, 25);
-            setGradient(p5, 0, 0, CANVAS_MAX_WIDTH, CANVAS_MAX_HEIGHT * 0.6, black, white, 'vertical');
+            setGradient(p5, 0, 0, CANVAS_MAX_WIDTH, HORIZON_HEIGHT, black, white, 'vertical');
 
             // Grabs split complementary colors
             let colors = color.splitcomplement();
@@ -65,11 +65,7 @@ const SunsetScene = ({setmdata}) => {
         };
     };
 
-    return (
-        <>
-            <ReactP5Wrapper sketch={sketch} />
-        </>
-    );
+    return <ReactP5Wrapper sketch={sketch} />;
 };
 
 export default SunsetScene;
