@@ -17,16 +17,16 @@ export function drawMountains(p5, mountainColors, metadata) {
 
 function drawFirstMountainRange(p5, mountainColor, metadata) {
     let metadataToGrab = {};
-
     drawMountainRange(
         p5,
         CANVAS_HALF_MAX_HEIGHT,
         FIRST_MOUNTAIN_LOWER_Y_RANGE,
         mountainColor,
+        15,
         metadataToGrab
     );
 
-    metadata.first_mountain = {...metadataToGrab.data};
+    metadata.firstMountainRange = { ...metadataToGrab };
 }
 
 function drawSecondMountainRange(p5, mountainColor, metadata) {
@@ -37,13 +37,14 @@ function drawSecondMountainRange(p5, mountainColor, metadata) {
         SECOND_MOUNTAIN_MAX_HEIGHT,
         SECOND_MOUNTAIN_LOWER_Y_RANGE,
         mountainColor,
+        10,
         metadataToGrab
     );
 
-    metadata.second_mountain = {...metadataToGrab.data};
+    metadata.secondMountainRange = { ...metadataToGrab };
 }
 
-function drawMountainRange(p5, maxHeight, minHeight, color, metadata) {
+function drawMountainRange(p5, maxHeight, minHeight, color, maxPeaks, metadata) {
     const { r, g, b } = color;
     p5.fill(r, g, b);
 
@@ -51,27 +52,31 @@ function drawMountainRange(p5, maxHeight, minHeight, color, metadata) {
     p5.stroke(outline.r, outline.g, outline.b, 255);
     p5.strokeWeight(5);
 
-    const xRanges = makeArr(
-        0,
-        CANVAS_MAX_WIDTH,
-        Math.random() * (15 - 7) + 7,
-    );
+    for(let i = 1; i <= 2; i+=1) {
+        const xRanges = makeArr(
+            0,
+            CANVAS_MAX_WIDTH,
+            Math.random() * (maxPeaks - Math.ceil(maxPeaks / 2)) + Math.ceil(maxPeaks / 2),
+        );
 
-    metadata.data = {color: tinycolor(color).toHexString(), unique_vertex_count: xRanges.length};
+        metadata[`range${i}`] = {color: tinycolor(color).toHexString(), uniqueVertexCount: xRanges.length};
 
-    const coords = xRanges.map((x) => {
-        return { x: x, y: Math.random() * (maxHeight - minHeight) + minHeight };
-    });
+        const coords = xRanges.map((x) => {
+            return { x: x, y: (Math.random() * (maxHeight - minHeight) + minHeight) };
+        });
 
-    p5.beginShape();
-    p5.vertex(-10, CANVAS_MAX_HEIGHT);
-    p5.curveVertex(-10, maxHeight);
+        const offset = i * 10;
 
-    coords.forEach((coord) => {
-        p5.curveVertex(coord.x, coord.y);
-    });
+        p5.beginShape();
+        p5.vertex(-10, CANVAS_MAX_HEIGHT + offset);
+        p5.curveVertex(-10, maxHeight);
 
-    p5.curveVertex(CANVAS_MAX_WIDTH + 10, maxHeight);
-    p5.vertex(CANVAS_MAX_WIDTH + 10, CANVAS_MAX_HEIGHT);
-    p5.endShape(p5.CLOSE);
+        coords.forEach((coord) => {
+            p5.curveVertex(coord.x, coord.y);
+        });
+
+        p5.curveVertex(CANVAS_MAX_WIDTH + 10, maxHeight);
+        p5.vertex(CANVAS_MAX_WIDTH + 10, CANVAS_MAX_HEIGHT + offset);
+        p5.endShape(p5.CLOSE);
+    }
 }
