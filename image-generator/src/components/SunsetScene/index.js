@@ -10,17 +10,17 @@ import { drawStars } from './layers/stars';
 import { CANVAS_MAX_HEIGHT, CANVAS_MAX_WIDTH } from './constants';
 import { setGradient } from './utilities';
 
-const SunsetScene = () => {
-    const [doSave, setDoSave] = useState(false);
-
+const SunsetScene = ({setmdata}) => {
     const sketch = (p5) => {
         let canvas;
+
         p5.setup = () => {
             canvas = p5.createCanvas(CANVAS_MAX_WIDTH, CANVAS_MAX_HEIGHT);
             p5.noLoop();
         };
 
         p5.draw = () => {
+            const metadata = {};
             // Grab random color as base color
             let color = new tinycolor.random();
 
@@ -52,26 +52,29 @@ const SunsetScene = () => {
                 colors[2].darken(10).toRgb(),
             ];
 
-            drawStars(p5);
-            drawSun(p5, sunColor);
+            drawStars(p5, metadata);
+            drawSun(p5, sunColor, metadata);
             drawHorizon(p5);
             drawMountains(p5, mountainColors);
             drawLand(p5, landColors);
+
+            // setMetadata(metadataToSave);
+            // console.log(metadataToSave);
+            console.log(metadata);
+            setmdata(metadata);
+            
         };
 
         p5.updateWithProps = (props) => {
-            if (props.doSave) {
-                p5.save(canvas);
-            }
         }
     };
 
     return (
         <>
-            <button onClick={() => setDoSave(!doSave)}>Save Image</button>
-            <ReactP5Wrapper sketch={sketch} doSave={doSave} />
+            <ReactP5Wrapper sketch={sketch} />
         </>
     );
 };
 
 export default SunsetScene;
+export const MemoizedSunsetScene = React.memo(SunsetScene);

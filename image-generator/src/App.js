@@ -1,5 +1,5 @@
 import React from 'react';
-import SunsetScene from './components/SunsetScene';
+import SunsetSceneWrapper from './components/SunsetSceneWrapper';
 
 import './App.css';
 
@@ -7,7 +7,10 @@ function App() {
     return (
         <>
             <h1>Image Generator</h1>
-            <SunsetScene />
+            <SunsetSceneWrapper />
+            <SunsetSceneWrapper />
+            <SunsetSceneWrapper />
+            <SunsetSceneWrapper />
         </>
     );
 }

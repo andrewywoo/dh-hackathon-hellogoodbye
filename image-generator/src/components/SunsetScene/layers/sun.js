@@ -6,12 +6,14 @@ import {
     CANVAS_HALF_MAX_HEIGHT,
 } from '../constants';
 
-export function drawSun(p5, color) {
+export function drawSun(p5, color, metadata) {
     const sunXPos = Math.random() * (CANVAS_MAX_WIDTH - 0) + 0;
     const sunYPos = Math.random() * (CANVAS_HALF_MAX_HEIGHT - 200) + 200;
 
     const { r, g, b } = color;
     const sunColor = p5.color(r, g, b);
+    
+    metadata.sun = {color: sunColor};
 
     p5.fill(sunColor);
     const outlineRgb = tinycolor(color).brighten(10).toRgb();

@@ -1,8 +1,9 @@
 import { CANVAS_MAX_HEIGHT, CANVAS_MAX_WIDTH, STAR_RADIUS, STAR_TONES } from '../constants';
 import { makeArr } from '../utilities';
 
-export function drawStars(p5) {
-    const starCount = Math.random() * (60 - 30) + 30;
+export function drawStars(p5, metadata) {
+    const starCount = Math.floor(Math.random() * (60 - 30) + 30);
+    metadata.starCount = starCount;
 
     const xCoords = makeArr(0, CANVAS_MAX_WIDTH, starCount);
     const coords = xCoords.map((x) => {
