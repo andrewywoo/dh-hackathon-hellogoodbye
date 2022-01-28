@@ -7,6 +7,7 @@ import {
     SECOND_MOUNTAIN_LOWER_Y_RANGE,
     MOUNTAIN_TONES,
 } from '../constants';
+import { makeArr } from '../utilities';
 
 export function drawMountains(p5) {
     drawFirstMountainRange(p5);
@@ -50,13 +51,4 @@ function drawMountainRange(p5, maxHeight, minHeight, color) {
     p5.curveVertex(CANVAS_MAX_WIDTH, maxHeight);
     p5.vertex(CANVAS_MAX_WIDTH, CANVAS_MAX_HEIGHT);
     p5.endShape(p5.CLOSE);
-}
-
-function makeArr(startValue, stopValue, cardinality) {
-    var arr = [];
-    var step = (stopValue - startValue) / (cardinality - 1);
-    for (var i = 0; i < cardinality; i++) {
-        arr.push(startValue + step * i);
-    }
-    return arr;
 }
