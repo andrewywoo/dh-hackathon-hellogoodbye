@@ -1,3 +1,4 @@
+import tinycolor from 'tinycolor2';
 import {
     CANVAS_MAX_HEIGHT,
     CANVAS_MAX_WIDTH,
@@ -5,7 +6,7 @@ import {
 } from '../constants';
 import { makeArr } from '../utilities';
 
-const generateLands = (p5, maxHeight, minHeight, colors) => {
+const generateLands = (p5, maxHeight, minHeight, colors, metadata) => {
     const xRanges = makeArr(
         0,
         CANVAS_MAX_WIDTH,
@@ -41,13 +42,16 @@ const generateLands = (p5, maxHeight, minHeight, colors) => {
         p5.endShape(p5.CLOSE);
         offset += 10;
     });
+
+    metadata.lands = {baseColor: tinycolor(colors[0]).toHexString(), unique_vertex_count: xRanges.length};
 };
 
-export const drawLand = (p5, landColors) => {
+export const drawLand = (p5, landColors, metadata) => {
     generateLands(
         p5,
         CANVAS_MAX_HEIGHT - 75,
         CANVAS_HALF_MAX_HEIGHT + 175,
         landColors,
+        metadata
     );
 };

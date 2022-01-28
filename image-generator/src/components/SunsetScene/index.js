@@ -24,6 +24,7 @@ const SunsetScene = ({setmdata}) => {
             let color = new tinycolor.random();
 
             // Sets complimentary color as background
+            metadata.backgroundColor = color.complement().toHexString();
             const { r, g, b } = color.complement().toRgb();
             p5.background(r, g, b);
 

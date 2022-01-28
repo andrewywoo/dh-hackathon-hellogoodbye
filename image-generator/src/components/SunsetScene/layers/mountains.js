@@ -16,25 +16,31 @@ export function drawMountains(p5, mountainColors, metadata) {
 }
 
 function drawFirstMountainRange(p5, mountainColor, metadata) {
-    metadata.first_mountain = {color: tinycolor(mountainColor).toHexString()};
+    let metadataToGrab = {};
+
     drawMountainRange(
         p5,
         CANVAS_HALF_MAX_HEIGHT,
         FIRST_MOUNTAIN_LOWER_Y_RANGE,
         mountainColor,
-        metadata
+        metadataToGrab
     );
+
+    metadata.first_mountain = {...metadataToGrab.data};
 }
 
 function drawSecondMountainRange(p5, mountainColor, metadata) {
-    metadata.second_mountain = {color: tinycolor(mountainColor).toHexString()};
+    let metadataToGrab = {};
+
     drawMountainRange(
         p5,
         SECOND_MOUNTAIN_MAX_HEIGHT,
         SECOND_MOUNTAIN_LOWER_Y_RANGE,
         mountainColor,
-        metadata
+        metadataToGrab
     );
+
+    metadata.second_mountain = {...metadataToGrab.data};
 }
 
 function drawMountainRange(p5, maxHeight, minHeight, color, metadata) {
@@ -50,6 +56,9 @@ function drawMountainRange(p5, maxHeight, minHeight, color, metadata) {
         CANVAS_MAX_WIDTH,
         Math.random() * (15 - 7) + 7,
     );
+
+    metadata.data = {color: tinycolor(color).toHexString(), unique_vertex_count: xRanges.length};
+
     const coords = xRanges.map((x) => {
         return { x: x, y: Math.random() * (maxHeight - minHeight) + minHeight };
     });
