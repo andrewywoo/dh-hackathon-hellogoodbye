@@ -31,7 +31,7 @@ const SunsetScene = () => {
             // Sets gradient on background
             const white = p5.color(255, 255, 255, 100);
             const black = p5.color(0, 25);
-            setGradient(p5, 0, 0, CANVAS_MAX_WIDTH, CANVAS_MAX_HEIGHT * 0.6, white, black, 1);
+            setGradient(p5, 0, 0, CANVAS_MAX_WIDTH, CANVAS_MAX_HEIGHT * 0.6, black, white, 1);
 
             // Grabs split complementary colors
             let colors = color.splitcomplement();
