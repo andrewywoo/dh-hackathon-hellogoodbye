@@ -5,7 +5,7 @@ import {MemoizedSunsetScene} from '../SunsetScene';
 import './style.scss';
 
 const SunsetSceneWrapper = () => {
-    const [mdata, setmdata] = useState({});
+    const [mdata, setmdata] = useState();
 
     return (
         <div className="sunset-grid">
