@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ReactP5Wrapper } from 'react-p5-wrapper';
 import tinycolor from 'tinycolor2';
 
@@ -10,9 +10,12 @@ import { drawStars } from './layers/stars';
 import { CANVAS_MAX_HEIGHT, CANVAS_MAX_WIDTH } from './constants';
 
 const SunsetScene = () => {
+    const [doSave, setDoSave] = useState(false);
+
     const sketch = (p5) => {
+        let canvas;
         p5.setup = () => {
-            p5.createCanvas(CANVAS_MAX_WIDTH, CANVAS_MAX_HEIGHT);
+            canvas = p5.createCanvas(CANVAS_MAX_WIDTH, CANVAS_MAX_HEIGHT);
             p5.background(0);
             p5.noLoop();
         };
@@ -45,9 +48,20 @@ const SunsetScene = () => {
             drawMountains(p5, mountainColors);
             drawLand(p5, landColors);
         };
+
+        p5.updateWithProps = (props) => {
+            if (props.doSave) {
+                p5.save(canvas);
+            }
+        }
     };
 
-    return <ReactP5Wrapper sketch={sketch} />;
+    return (
+        <>
+            <button onClick={() => setDoSave(!doSave)}>Save Image</button>
+            <ReactP5Wrapper sketch={sketch} doSave={doSave} />
+        </>
+    );
 };
 
 export default SunsetScene;
