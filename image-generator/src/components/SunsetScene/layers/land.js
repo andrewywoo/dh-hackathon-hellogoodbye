@@ -30,15 +30,15 @@ const generateLands = (p5, maxHeight, minHeight, colors, metadata) => {
         alpha = (alpha / 2);
 
         p5.beginShape();
-        p5.vertex(0, CANVAS_MAX_HEIGHT);
-        p5.vertex(0, maxHeight);
+        p5.vertex(-10, CANVAS_MAX_HEIGHT);
+        p5.vertex(-10, maxHeight);
 
         coords.forEach((coord) => {
             p5.vertex(coord.x, coord.y + offset);
         });
 
-        p5.vertex(CANVAS_MAX_WIDTH, maxHeight / 2);
-        p5.vertex(CANVAS_MAX_WIDTH, CANVAS_MAX_HEIGHT);
+        p5.vertex(CANVAS_MAX_WIDTH + 10, maxHeight / 2);
+        p5.vertex(CANVAS_MAX_WIDTH + 10, CANVAS_MAX_HEIGHT);
         p5.endShape(p5.CLOSE);
         offset += 10;
     });

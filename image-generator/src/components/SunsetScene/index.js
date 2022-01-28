@@ -10,6 +10,8 @@ import { drawStars } from './layers/stars';
 import { CANVAS_MAX_HEIGHT, CANVAS_MAX_WIDTH } from './constants';
 import { setGradient } from './utilities';
 
+import './style.scss';
+
 const SunsetScene = ({setmdata}) => {
     const sketch = (p5) => {
 
