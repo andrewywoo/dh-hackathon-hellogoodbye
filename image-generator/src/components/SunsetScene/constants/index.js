@@ -12,7 +12,7 @@ export const SECOND_MOUNTAIN_LOWER_Y_RANGE = SECOND_MOUNTAIN_MAX_HEIGHT + 50;
 export const SUN_DIAMETER = CANVAS_MAX_HEIGHT/4;
 
 // Star Constants
-export const STAR_RADIUS = [[2, 8], [3, 10], [4,13]];
+export const STAR_RADIUS = [[1, 3], [1, 6], [3, 12]];
 
 // Horizon Constants
 export const HORIZON_HEIGHT = CANVAS_HALF_MAX_HEIGHT + 15;
